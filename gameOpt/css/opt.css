@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(../img/1.png);
+    background-size: 100% 100%;
+}
+
+#h20{
+    left: 40px;
+    color: black;
+    position: absolute;
+
+}
+#h21{
+    left: 500px;
+    color: black;
+    position: absolute;
+
+}
+
+#wai1{
+    top: 10px;
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    line-height: 20px;
+    border: 1px solid black;
+}
+
+#wai2{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    top: 50px;
+    left: 150px;
+    position: absolute;
+    border: 1px solid black;
+}
+h1{
+    top: 20px;
+    width: 500px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+}
+
+.but1, .but2{
+    font-size: 30px;
+    background-color: green;
+    color: wheat;
+}
+
+#but1{
+    border-radius: 30%;
+    left: 150px;
+    top: 200px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    position: absolute;
+}
+
+#but2{
+    border-radius: 30%;
+    left: 150px;
+    top: 260px;
+    width: 200px;
+    text-align: center;
+    height: 40px;
+    position: absolute;
+}
+
+.foo{
+    margin-top: 40px;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    position: absolute;
+    background-color: grey;
+}

@@ -1,0 +1,58 @@
+
+.middle .lunbo{
+    padding-bottom: 10px;
+    width: 400px; 
+    height: 90px; 
+    position: relative;
+    
+}
+
+.middle .lunbo img{
+    width: 400px;
+    height: 90px;
+    background-size: 300px 90px;
+    display: none;
+    position: absolute;
+}
+
+.middle .lunbo img:first-of-type{
+    display: block;
+}
+
+.middle .lunbo .iconfont{
+    top: -5px;
+    cursor: pointer;
+    font-size: 80px;
+    position: absolute;
+}
+
+.middle .lunbo #but1{
+   left: -60px;
+}
+.middle .lunbo #but2{
+  right: -90px;
+}
+.middle .lunbo .num{
+    left: 100px;
+    top:70px;
+    list-style: none;
+    position: relative;
+  
+}
+
+.middle .lunbo .num .li1:hover{
+    background-color: yellow;
+}
+
+.middle .lunbo .num .li1{
+    width: 10px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    color: black;
+    background-color: black;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer; 
+    
+}
