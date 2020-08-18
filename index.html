@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./picture/iconfont.css">
     <link rel="stylesheet" href="./css/lunbo.css">
     <link rel="stylesheet" href="./css/rilii.css">
+    <script src="./vue/vue.js"></script>
     <title>个人网站</title>
     <style>
         body{
@@ -21,6 +22,12 @@
         header .iconfont{
             font-size: 40px;
         }
+
+        header #Ssuo li{
+            text-align: left;
+            list-style: none;
+        }
+
         .biaoti{
             margin-top: 20px;
             border: 1px solid gray;
@@ -96,31 +103,38 @@
 <body>
     <div class="container">
         <header >
-            <div class="row">
-               <div class="col-md-8 "><a style="font-size: 30px;" href="">青山绿水</a><br>
+            <div class="row" >
+               <div class="col-sm-8 "><a style="font-size: 30px;" href="">青山绿水</a><br>
                 吴先生的个人博客
                </div>
 
-                  <div class="col-md-4 text-right">
+                  <div class="col-sm-4 text-right" id="Ssuo" >
                     <form class="form-inline">
-                    <span class="iconfont iconshebeijiance"></span>
-                    <input type="text" class="form-control" id="inputText" placeholder="text"> &nbsp; <button class="btn btn-default">搜索</button>
+                    <span class="iconfont iconshebeijiance" @click="headerSpan()"></span>
+                    <input type="text" class="form-control"  placeholder="text" @input="SsuoClick()" v-model="Ssuotext"> &nbsp; 
+                    <button class="btn btn-default">搜索</button>
+                    <ul v-show="isShow">
+                        <li v-for="data in dataList">
+                            {{data}} <br>提示：点击搜索符号取消相关语句！！
+                        </li>
+                    
+                    </ul>
                 </form>  
                 </div>
            </div>
 
            <div class="row biaoti">
             
-            <a href="./index.html" class="col-md-1 active">生活琐事</a>
-            <a href="" class="col-md-1 active">有感而发</a>
-            <a href="./gameOpt/index.html" class="col-md-1 active">游戏试玩</a>
-            <a href="" class="col-md-1 active">可以留言</a>
-            <a href="" class="col-md-1 active">随意打赏</a>
-            <a href="" class="col-md-1 active">关于自己</a>
-            <a href="" class="col-md-1 active">我的朋友</a>
-            <a href="" class="col-md-1 active">阅读记录</a>
-            <a href="" class="col-md-1 active">观影记录</a>
-            <a href="" class="col-md-1 active">待开发位</a><br>
+            <a href="./index.html" class="col-sm-1 active">生活琐事</a>
+            <a href="" class="col-sm-1 active">有感而发</a>
+            <a href="./gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
+            <a href="" class="col-sm-1 active">可以留言</a>
+            <a href="" class="col-sm-1 active">随意打赏</a>
+            <a href="" class="col-sm-1 active">关于自己</a>
+            <a href="" class="col-sm-1 active">我的朋友</a>
+            <a href="" class="col-sm-1 active">阅读记录</a>
+            <a href="" class="col-sm-1 active">观影记录</a>
+            <a href="" class="col-sm-1 active">待开发位</a><br>
         </div>
         </header>
         <middle class="row middle">
@@ -205,14 +219,14 @@
                 <span class="time">发表时间</span> &nbsp; <button>删除</button>
             </div>
             <div class="right">
-                <div class="ger">
+                <div class="ger" id="Gren">
                     <h3 class="text-center">个人介绍框</h3>
                     <p class="text-justify">网名：你个小坏蛋</p>
                     <p class="text-justify">职业：在校学生</p>
                     <p class="text-justify">现居：广东</p>
                     <p class="text-justify">Email：1440807980@qq.com</p><br>
-                    <span class="iconfont iconicon-test4">赞</span> &nbsp;
-                    <span class="iconfont iconicon-test5">收藏</span>
+                    <span class="iconfont iconicon-test4" @click="zhan()" >{{number1}}个</span> &nbsp;
+                    <span class="iconfont iconicon-test5"  @click="shou()">{{number2}}次</span>
                 </div>
               
            
@@ -281,5 +295,7 @@
     </div>
     <script src="./js/lunbo.js"></script>
     <script src="./js/rili.js"></script>
+    <script src="./vue/Ssuo.js"></script>
+    <script src="./vue/gren.js"></script>
 </body>
 </html>
