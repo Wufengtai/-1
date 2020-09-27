@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/css2/bootstrap.min.css">
+    <script src="../ajax/ajax.js"></script>
+    <link rel="stylesheet" href="../picture/iconfont.css">
+    <script src="../vue/vue.js"></script>
+    <script src="../vendoer/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/animate.css/animate.min.css">
+    <script src="../js/mineFriend.js"></script>
+    <link rel="stylesheet" href="../css/mineFriebd.css">
+    <title>我的朋友</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: whitesmoke;
+        }
+
+        .mark {
+            background: url('../img/picture.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        .container {
+            position: relative;
+
+
+        }
+
+        header {
+            margin-top: 20px;
+        }
+
+        .biaoti {
+            margin-top: 20px;
+            border: 1px solid whitesmoke;
+            border-left-style: none;
+            border-right-style: none;
+        }
+
+        .biaoti a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: gray;
+        }
+
+        .biaoti a:hover {
+            background-color: whitesmoke;
+            border-radius: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mark"></div>
+    <div class="container">
+        <header>
+            <div class="row biaoti">
+                <a href="" class="col-sm-1 active" id="a2">生活琐事</a>
+                <a href="" class="col-sm-1 active" id="a1">有感而发</a>
+                <a href="../gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
+                <a href="" class="col-sm-1 active">随意打赏</a>
+                <a href="" class="col-sm-1 active" id="a3">关于自己</a>
+                <a href="" class="col-sm-1 active" id="a4">我的朋友</a>
+                <a href="" class="col-sm-1 active">阅读记录</a>
+                <a href="" class="col-sm-1 active">观影记录</a>
+                <a href="" class="col-sm-1 active">待开发位</a><br>
+            </div>
+        </header>
+        <div id="F" class="Fdiv"></div>
+        <div class="row" id="box">
+            <div lass="col-md-12">
+                <button id="big" @click="RightBut()" style="color: black; margin: 20px;">是否浏览广场</button>
+            </div>
+            <!-- <div class="animate__animated animate__bounce div0"></div> -->
+            <div class="LeftShow" v-if="isCreated" id="ONtext">
+                {{show}}
+            </div>
+
+            <div :class="class1" id="class1">
+                <div :class="class2"></div>
+                <div :class="class3"></div>
+                <div :class="class4">
+                    <textarea name="text" id="text" cols="30" rows="10" v-if="istext" :class="class5"></textarea>
+                </div>
+            </div>
+            <div class="right ">
+                <div class="TopRight" id="TopRight">{{num}}</div>
+                <div class="ButtonRight" id="ShowRight">
+                    <!-- <div  @click="RightBut()">
+                        {{Shouright}}
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

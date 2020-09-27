@@ -1,301 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-    <script src="./vendoer/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="./css/css2/bootstrap.min.css">
+    <script src="./ajax/ajax.js"></script>
     <link rel="stylesheet" href="./picture/iconfont.css">
-    <link rel="stylesheet" href="./css/lunbo.css">
-    <link rel="stylesheet" href="./css/rilii.css">
+    <script src="./vendoer/jquery-3.5.1.min.js"></script>
     <script src="./vue/vue.js"></script>
-    <title>个人网站</title>
+    <script src="./js/index.js"></script>
+    <title>注册页面</title>
     <style>
         body{
-            background-color: rgb(187, 240, 187);    
+            margin: 0;
+            padding: 0;
         }
-        header{
-            margin-top: 20px;
+        .iconfont{
+            font-size: 50px;
+            background-color: rgba(146, 53, 53, 0.3);
+            position: relative;
         }
-        header .iconfont{
-            font-size: 40px;
+        .mark{
+            background: url('../img/picture2.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+           
         }
-
-        header #Ssuo li{
-            text-align: left;
-            list-style: none;
+        .panel-primary, .panel-footer{
+            background-color: rgba(60, 162, 245, 0.3);
         }
-
-        .biaoti{
-            margin-top: 20px;
-            border: 1px solid gray;
-            border-left-style: none;
-            border-right-style: none;
-        }
-        .biaoti a{
-            padding-top: 10px;
-            padding-bottom: 10px;
-            color: gray;
-        }
- 
-        .biaoti a:hover{
-            background-color: dodgerblue;
-            border-radius: 30%;
-        }
-        .middle .fenqu{
-            /* width: 700px; */
-            margin-top: 7px;
-            border:1px gray solid;
-            border-left-style: none;
-            border-right-style: none;
-            border-top-style: none;
-        }
-       .middle .fenqu p{
-            padding: 10px;
-            color: 	#006400;
-        }
-        .middle .right{
-            width: 300px;
-            
-            float: right;
-            
-        }
-        .middle .zuo{
-            width: 650px;
-            margin-top: 10px;
-            float: left;
+        .panel-heading{
+            background-color: rgba(45, 145, 226, 0.3);
         }
 
-        .middle .zuo img{
-            width: 50px;
-            height: 50px;
-            background-size: 50px 50px;
-
+        .container{
+            position: relative;
+            display: none;
         }
-        .middle .zuo p{
-            font-size: 20px;
-
+        .div2{
+            width: 100%;
+            height: 75px;
+            color: whitesmoke;
+            position: relative;
+            text-align: center;
         }
-
-        .middle .zuo .time{
-            color: royalblue;
-            font-size: 10px;
-
-        }
-        .middle .zuo button{
-            
-            font-size: 10px;
-
+        .fanwei {
+            margin: 200px 400px;
         }
 
-  
-
-        .middle .right  .iconfont{
-            font-size: 30px;
+        .mag {
+            display: none;
         }
-
-
-        
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <header >
-            <div class="row" >
-               <div class="col-sm-8 "><a style="font-size: 30px;" href="">青山绿水</a><br>
-                吴先生的个人博客
-               </div>
-
-                  <div class="col-sm-4 text-right" id="Ssuo" >
-                    <form class="form-inline">
-                    <span class="iconfont iconshebeijiance" @click="headerSpan()"></span>
-                    <input type="text" class="form-control"  placeholder="text" @input="SsuoClick()" v-model="Ssuotext"> &nbsp; 
-                    <button class="btn btn-default">搜索</button>
-                    <ul v-show="isShow">
-                        <li v-for="data in dataList">
-                            {{data}} <br>提示：点击搜索符号取消相关语句！！
-                        </li>
-                    
-                    </ul>
-                </form>  
-                </div>
-           </div>
-
-           <div class="row biaoti">
-            
-            <a href="./index.html" class="col-sm-1 active">生活琐事</a>
-            <a href="" class="col-sm-1 active">有感而发</a>
-            <a href="./gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
-            <a href="" class="col-sm-1 active">可以留言</a>
-            <a href="" class="col-sm-1 active">随意打赏</a>
-            <a href="" class="col-sm-1 active">关于自己</a>
-            <a href="" class="col-sm-1 active">我的朋友</a>
-            <a href="" class="col-sm-1 active">阅读记录</a>
-            <a href="" class="col-sm-1 active">观影记录</a>
-            <a href="" class="col-sm-1 active">待开发位</a><br>
-        </div>
-        </header>
-        <middle class="row middle">
-         <div class="col-md-12">
-            <div class="fenqu col-md-8">
-                <div class="col-md-4 ">
-                <p class="text-left ">目前浏览的分区：生活琐事</p>
-                <p class="text-left ">每天琐事</p>
-                </div>
-                   <div class="col-md-8 lunbo" id="lunbo1">
-                       
-                               <img src="./img/1.jpg" alt="">
-                               <img src="./img/2.jpg" alt="">
-                               <img src="./img/3.jpg" alt="">
-                               <img src="./img/4.jpg" alt="">
-                               <img src="./img/5.jpg" alt="">             
-                               <span id="but1" class="iconfont iconicon-test8"></span>
-                               <span id="but2" class="iconfont iconicon-test9"></span>
-                                   <ul class="num">
-                                       <li class="li1">1</li>
-                                       <li class="li1">2</li>
-                                       <li class="li1">3</li>
-                                       <li class="li1">4</li>
-                                       <li class="li1">5</li>
-                                   </ul>
-                    </div>
-                        
-                    
-            </div>
-            <div class="col-md-4">
-                <audio src="./music/1.mp3" controls preload="auto" autoplay="autoplay" style="margin-top: 20px; margin-left: 35px; "></audio>
-            </div>
-        </div>
-            <div class="text-left zuo ">
-                <p>
-                <img src="./music/tou.jpg" alt=""/> &nbsp; 你个小坏蛋
-                </p>
-                <div class="lead"><em>主要文本内容
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    注意目前只可测试琐事区和游戏区
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                    内容内容内容内容内容内容
-                </em></div>
-                <span class="time">发表时间</span> &nbsp; <button>删除</button>
-            </div>
-            <div class="right">
-                <div class="ger" id="Gren">
-                    <h3 class="text-center">个人介绍框</h3>
-                    <p class="text-justify">网名：你个小坏蛋</p>
-                    <p class="text-justify">职业：在校学生</p>
-                    <p class="text-justify">现居：广东</p>
-                    <p class="text-justify">Email：1440807980@qq.com</p><br>
-                    <span class="iconfont iconicon-test4" @click="zhan()" >{{number1}}个</span> &nbsp;
-                    <span class="iconfont iconicon-test5"  @click="shou()">{{number2}}次</span>
-                </div>
-              
-           
-                <div class="div3">
-                    <div class="month"> 
-                               
-                        <ul class="ul2">
-                          <li class="prev" id="prev">❮</li>
-                          <li class="next" id="next1">❯</li>
-                          <li class="time">
-                            <h3 id="li2">月份</h3>
-                            <h6 id="shijian">时间</h6>
-                            <span id="year">2016</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <ul class="weekdays">
-                        <li class="li3">一</li>
-                        <li class="li3">二</li>
-                        <li class="li3">三</li>
-                        <li class="li3">四</li>
-                        <li class="li3">五</li>
-                        <li class="li3">六</li>
-                        <li class="li3">七</li>
-                      </ul>
-        
-                      <ul class="days">  
-                        <i class="li5 li4">1</i>
-                        <i class="li5 li4">2</i>
-                        <i class="li5 li4">3</i>
-                        <i class="li5 li4">4</i>
-                        <i class="li5 li4">5</i>
-                        <i class="li5 li4">6</i>
-                        <i class="li5 li4">7</i>
-                        <i class="li7 li4">8</i>
-                        <i class="li7 li4">9</i>
-                        <i class="li7 li4">10</i>
-                        <i class="li7 li4">11</i>
-                        <i class="li7 li4">12</i>
-                        <i class="li7 li4">13</i>
-                        <i class="li7 li4">14</i>
-                        <i class="li6 li4">15</i>
-                        <i class="li6 li4">16</i>
-                        <i class="li6 li4">17</i>
-                        <i class="li6 li4">18</i>
-                        <i class="li6 li4">19</i>
-                        <i class="li6 li4">20</i>
-                        <i class="li6 li4">21</i>
-                        <i class="li6 li4">22</i>
-                        <i class="li6 li4">23</i>
-                        <i class="li6 li4">24</i>
-                        <i class="li6 li4">25</i>
-                        <i class="li6 li4">26</i>
-                        <i class="li6 li4">27</i>
-                        <i class="li6 li4">28</i>
-                        <i class="li6 li4">29</i>
-                        <i class="li6 li4">30</i>
-                        <i class="li6 li4">31</i>
-                      </ul>
-                      </div>
-            </div>
-    
-         
-        </div>
-        </middle>
+    <div class="mark"></div>
+    <div class="div2">点<span class="iconfont icondecline-filling"></span>俺
     </div>
-    <script src="./js/lunbo.js"></script>
-    <script src="./js/rili.js"></script>
-    <script src="./vue/Ssuo.js"></script>
-    <script src="./vue/gren.js"></script>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>注册账号</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="text" style="color: whitesmoke;">昵称</label>
+                    <input type="text" name="text" class="form-control" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;"/>
+                </div>
+                <div class="form-group">
+                    <label for="username" style="color: whitesmoke;">账号</label>
+                    <input type="number" name="username" class="form-control" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;"/>
+                </div>
+                <div class="form-group">
+                    <label for="password"style="color: whitesmoke;">密码</label>
+                    <input type="password" name="password" class="form-control" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;"/>
+                </div>
+                <div class="form-group">
+                    <p id="mag" class="mag"></p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg" id="submit" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;">注册</button>
+                </div>
+                <div class="panel-footer">
+                    <a href="./login.html" style="color: teal;">马上登录</a>
+                </div>
+
+
+            </div>
+        </div>
+        
+    
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/css2/bootstrap.min.css">
+    <script src="../ajax/ajax.js"></script>
+    <link rel="stylesheet" href="../picture/iconfont.css">
+    <script src="../vue/vue.js"></script>
+    <script src="../vendoer/jquery-3.5.1.min.js"></script>
+    <title>个人信息页面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: whitesmoke;
+        }
+
+        .mark {
+            background: url('../img/picture.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        .container {
+            position: relative;
+            background-color: rgba(53, 52, 52, 0.3);
+
+        }
+
+        header {
+            margin-top: 20px;
+        }
+
+        .biaoti {
+            margin-top: 20px;
+            border: 1px solid whitesmoke;
+            border-left-style: none;
+            border-right-style: none;
+        }
+
+        .biaoti a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: gray;
+        }
+
+        .biaoti a:hover {
+            background-color: whitesmoke;
+            border-radius: 30%;
+        }
+
+        .left {
+            text-align: center;
+            margin-top: 20px;
+            width: 300px;
+            height: 500px;
+            /* background: salmon; */
+        }
+
+        .right {
+            text-align: center;
+            margin-top: 20px;
+            width: 300px;
+            height: 500px;
+            /* background: seagreen; */
+        }
+
+        .middl {
+            margin-top: 20px;
+            width: 440px;
+            height: 500px;
+            margin-left: 50px;
+            margin-right: 50px;
+            /* background: skyblue; */
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 10px;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            color: #ffffff;
+            text-align: center;
+            /* background: slategray; */
+        }
+
+        .delete {
+            text-align: center;
+        }
+    </style>
+    <script>
+        //from 表单点击提交数据以后，需要跳转页面
+        //(解决方法)ajax 异步进行数据传输
+        //使用时两者选其一
+        window.onload = function () {
+            var url = window.location.toString();
+            var name1 = document.getElementById('name1');
+            var user = document.getElementById('user');
+            var str = url.indexOf("?");
+            var str1 = url.substr(str + 1);
+            var str2 = str1.split("=");
+            var a1 = document.getElementById('a1');
+            var a2 = document.getElementById('a2');
+            var a3 = document.getElementById('a3');
+            var a4 = document.getElementById('a4');
+            var tex1 = document.getElementById('tex1');
+            var age1 = document.getElementById('age1');
+            var garder1 = document.getElementById('garder1');
+            var work1 = document.getElementById('work1');
+            var num1 = document.getElementById('num1');
+            var ema1 = document.getElementById('ema1');
+            $ajax({
+                method: "get",
+                url: "../php/mine.php",
+                data: {
+                    username: str2[1]
+
+                },
+                success: function (result) {
+                    //  alert(result);
+                    var obj = JSON.parse(result);
+                    console.log(obj)
+                    a1.href = './write.html?user=' + str2[1] + '?name=' + obj.name + '?username=' + obj.username;
+                    a2.href = '../zhuye.html?user=' + str2[1];
+                    a3.href = './mine.html?user=' + str2[1];
+                    a4.href = './mineFriend.html?user=' + str2[1] + '?name=' + obj.name + '?username=' + obj.username;
+                    name1.innerHTML = "昵称：" + obj.name;
+                    user.innerHTML = "账号：" + obj.username;
+                    tex1.innerText = "现地址：" + obj.addres;
+                    age1.innerHTML = "年龄：" + obj.age;
+                    garder1.innerHTML = "性别：" + obj.Gender;
+                    work1.innerHTML = "职业：" + obj.work;
+                    num1.innerHTML = "电话：" + obj.iphon;
+                    ema1.innerHTML = "邮箱：" + obj.eimal;
+
+                },
+                error: function (msg) {
+                    alert(msg);
+                }
+            })
+
+            var vm = new Vue({
+                //宣染开始的地方
+                el: "#box",
+                data: {
+                    isname1: false,
+                    isPass: false,
+                },//状态
+
+                methods: {
+                    name1Click() {
+                        this.isPass = false;
+                        this.isname1 = !this.isname1//点击变换状态
+                    },
+                    Click1() {
+                        var Oninput = document.getElementsByTagName('input');
+                        $ajax({
+                            method: "get",
+                            url: "../php/mine1.php",
+                            data: {
+                                Uname: Oninput[4].value,
+                                username: str2[1],
+                            },
+                            success: function (result) {
+                                var obj = JSON.parse(result);
+                                alert("昵称" + obj.massage + "!!!!点击确定2秒后自动刷新当前页面！！");
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 2000)
+                            },
+                            error: function (msg) {
+                                console.log(msg);
+                            }
+                        })
+                    },
+
+                    PassClick() {
+                        this.isname1 = false;
+                        this.isPass = !this.isPass;//点击变换状态
+                    },
+                    Click2() {
+                        var Oninput = document.getElementsByTagName('input');
+                        $ajax({
+                            method: "get",
+                            url: "../php/minePass.php",
+                            data: {
+                                Upass: Oninput[4].value,
+                                username: str2[1],
+                            },
+                            success: function (result) {
+                                var obj = JSON.parse(result);
+                                alert("密码" + obj.massage + "!!!!点击确定2秒后自动跳转到登录页面！！");
+                                setTimeout(function () {
+                                    window.location.href = '../login.html';
+                                }, 2000)
+                            },
+                            error: function (msg) {
+                                console.log(msg);
+                            }
+                        })
+                    },
+
+
+
+
+                }
+            })
+
+            var Upvm = new Vue({
+                //宣染开始的地方
+                el: "#Upbox",
+                data: {
+                },//状态
+
+                methods: {
+                    Click3() {
+                        var UpOpt = document.getElementsByTagName('select')
+                        var Upinput = document.getElementsByTagName('input');
+                        $ajax({
+                            method: "get",
+                            url: "../php/mine2.php",
+                            data: {
+                                username: str2[1],
+                                UpGrader: UpOpt[0].value,
+                                Upage: Upinput[0].value,
+                                Upiphon: Upinput[1].value,
+                                Upaddres: Upinput[3].value,
+                                Upemail: Upinput[2].value,
+                                Upwork: UpOpt[1].value,
+
+                            },
+                            success: function (result) {
+                                console.log(str2[1])
+                                console.log(UpOpt[0].value, Upinput[0].value, Upinput[3].value, Upinput[1].value, Upinput[2].value, UpOpt[1].value)
+                                var obj = JSON.parse(result);
+                                alert(obj.massage + "!!!!点击确定2秒后自动刷新当前页面！！");
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 2000)
+                            },
+                            error: function (msg) {
+                                console.log(msg);
+                            }
+                        })
+                    },
+                }
+            })
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="mark"></div>
+    <div class="container">
+        <header>
+            <div class="row biaoti">
+                <a href="" class="col-sm-1 active" id="a2">生活琐事</a>
+                <a href="" class="col-sm-1 active" id="a1">有感而发</a>
+                <a href="../gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
+                <a href="" class="col-sm-1 active">随意打赏</a>
+                <a href="" class="col-sm-1 active" id="a3">关于自己</a>
+                <a href="" class="col-sm-1 active" id="a4">我的朋友</a>
+                <a href="" class="col-sm-1 active">阅读记录</a>
+                <a href="" class="col-sm-1 active">观影记录</a>
+                <a href="" class="col-sm-1 active">待开发位</a><br>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-md-3 left delete" id="Upbox">
+                <h3>修改个人信息框</h3>
+                <div class="panel-body">
+                    <select class="form-control" id="garder"
+                        style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">
+                        <option style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">男</option>
+                        <option style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">女</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="age">年龄：</label>
+                        <input type="number" name="age" id="age" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" />
+                    </div>
+                    <select class="form-control" id="work"
+                        style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">
+                        <option style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">学生</option>
+                        <option style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">其它work</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="number">电话：</label>
+                        <input type="number" name="nubmer" id="num" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ema">邮箱：</label>
+                        <input type="email" name="email" id="ema" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" />
+                    </div>
+                    <div class="form-group">
+                        <label for="tex">现地址：</label>
+                        <input type="text" name="text" id="tex" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default" id="submit" @click="Click3()"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">修改</button>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6  middl">
+                <h1>个人信息框</h1><br><br>
+                <h4 id="name1"></h4><br><br>
+                <span id="user"></span><br><br>
+                <span id="garder1"></span><br><br>
+                <span id="age1"></span><br><br>
+                <span id="work1"></span><br><br>
+                <span id="num1"></span><br><br>
+                <span id="ema1"></span><br><br>
+                <span id="tex1"></span><br><br>
+            </div>
+            <div class="col-md-3 right" id="box">
+                <h3>修改个人昵称和密码框</h3><br><br>
+                <button @click="name1Click()"
+                    style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">点击修改昵称</button><br><br>
+                <button @click="PassClick()"
+                    style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">点击修改密码</button>
+                <div class="panel-body">
+                    <div class="form-group" v-if="isname1">
+                        <label for="text">昵称</label>
+                        <input type="text" name="text" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" /> <br><br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default" id="submit" @click="Click1()"
+                                style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">修改</button>
+                        </div>
+                    </div>
+                    <div class="form-group" v-if="isPass">
+                        <label for="password">密码</label>
+                        <input type="password" name="password" id="pass" class="form-control"
+                            style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;" /><br><br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default" id="submit" @click="Click2()"
+                                style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;">修改</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- <footer>
+        版权
+    </footer> -->
+</body>
+
+</html>

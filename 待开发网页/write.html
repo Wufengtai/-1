@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/css2/bootstrap.min.css">
+    <script src="../ajax/ajax.js"></script>
+    <link rel="stylesheet" href="../picture/iconfont.css">
+    <script src="../vue/vue.js"></script>
+    <script src="../vendoer/jquery-3.5.1.min.js"></script>
+    <title>有感而发页面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: whitesmoke;
+        }
+
+        .mark {
+            background: url('../img/picture.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        .container {
+            position: relative;
+            background-color: rgba(53, 52, 52, 0.3);
+
+
+        }
+
+        .fanwei {
+            margin: 200px 400px;
+        }
+
+        .div1 {
+            margin-top: 20px;
+            width: 100%;
+            height: 500px;
+            text-align: center;
+            border-radius: 5%;
+            /* background-image: linear-gradient(#e66465, #9198e5); */
+        }
+
+        header {
+            margin-top: 20px;
+            color: whitesmoke;
+        }
+
+        .biaoti {
+            margin-top: 20px;
+            border: 1px solid whitesmoke;
+            border-left-style: none;
+            border-right-style: none;
+        }
+
+        .biaoti a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: gray;
+        }
+
+        .biaoti a:hover {
+            background-color: whitesmoke;
+            border-radius: 30%;
+        }
+
+        input[type=text] {
+            border-radius: 4px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        //from 表单点击提交数据以后，需要跳转页面
+        //(解决方法)ajax 异步进行数据传输
+        //使用时两者选其一
+        window.onload = function () {
+            var obut = document.getElementById('submit');
+            var aInputs = document.getElementsByTagName('textarea');
+            var url = window.location.toString();
+            var str = url.indexOf("?");
+            var str1 = url.substr(str + 1);
+            var st = str1.split("?");
+            var st1 = st[0].split("=");//st1[1]为id
+            var st2 = st[1].split("=");//st2[1]为名称
+            var st3 = st[2].split("=");
+            var a1 = document.getElementById('a1');
+            var a2 = document.getElementById('a2');
+            var a3 = document.getElementById('a3');
+            var a4 = document.getElementById('a4');
+            var span1 = document.getElementById('spann');
+            var p = document.getElementsByTagName('p');
+            a1.href = './write.html?id=' + st1[1] + '?name=' + st2[1] + '?username=' + st3[1];
+            a2.href = '../zhuye.html?id=' + st1[1];
+            a3.href = './mine.html?id=' + st1[1];
+            a4.href = './mineFriend.html?id=' + st1[1] + '?name=' + st2[1] + '?username=' + st3[1];
+            obut.onclick = function () {
+                var now = new Date();
+                var month1 = now.getMonth() + 1;
+                span1.innerHTML = now.getFullYear() + '-' + month1 + '-' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+                var time2 = span1.outerHTML.split('>');
+                var time3 = time2[1].split('<');
+                $ajax({
+                    method: "get",
+                    url: "../php/write1.php",
+                    data: {
+                        username: st1[1],
+                    },
+                    success: function (result) {
+                        // alert(result) 
+                        console.log(time3[0]);
+                        var obj = JSON.parse(result);
+                        if (obj.code) {
+                            console.log("创建1时失败")
+                        } else {
+
+                            $ajax({
+                                method: "get",
+                                url: "../php/write.php",
+                                data: {
+                                    username: st1[1],
+                                    Name: st2[1],
+                                    text1: aInputs[0].value,
+                                    time1: time3[0],
+                                    g2_user: st3[1],
+                                },
+                                success: function (result) {
+                                    // alert(result) 
+                                    // console.log(time3[0]);
+                                    var obj1 = JSON.parse(result);
+                                    alert(obj1.massage);
+
+
+
+                                },
+                                error: function (msg) {
+                                    console.log(msg);
+                                }
+                            })
+
+                        }
+
+
+                    },
+                    error: function (msg) {
+                        console.log(msg);
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="mark"></div>
+    <div class="container">
+        <header>
+            <div class="row biaoti">
+
+                <a href="" class="col-sm-1 active" id="a2">生活琐事</a>
+                <a href="" class="col-sm-1 active" id="a1">有感而发</a>
+                <a href="./gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
+                <a href="" class="col-sm-1 active">随意打赏</a>
+                <a href="" class="col-sm-1 active" id="a3">关于自己</a>
+                <a href="" class="col-sm-1 active" id="a4">我的朋友</a>
+                <a href="" class="col-sm-1 active">阅读记录</a>
+                <a href="" class="col-sm-1 active">观影记录</a>
+                <a href="" class="col-sm-1 active">待开发位</a><br>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-md-12 div1">
+                <h3 style="text-shadow: 5px 5px 5px blue;">发表框</h3><br><br>
+                <textarea class="form-control" rows="10"
+                    style="background-color: rgba(190, 187, 187, 0.4); color: whitesmoke;"></textarea><br><br>
+                <p id="spann">发表时间</p>
+                <input class="btn btn-default" type="submit" id="submit" value="提交">
+            </div>
+            <!-- <div class="col-md-6 div2">
+                <h3 style="padding-top: 20px; padding-bottom: 20px;">待开发辅助工具区</h3>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>

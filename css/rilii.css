@@ -1,10 +1,11 @@
 .right .div3{
-    top: 15px;
-    left: -40px;
+    top: 50px;
+    left: -75px;
     width: 380px;
     height: 310px;
-    border: 5px solid 	#CD853F;
+    border: 5px solid 	#161615b9;
     position: relative;
+    color: whitesmoke;
     
 }
 .right .div3 .month .ul2 .prev{
@@ -40,7 +41,7 @@
     left: 0px;
     width: 370px;
     height: 100px;
-    background-image: linear-gradient(to bottom right, darkslateblue , rgb(30, 153, 224));
+    background-color: rgba(10, 10, 10, 0.63);
     position: absolute;
 }
 
@@ -51,7 +52,7 @@
     width: 370px;
     height: 30px;
     list-style: none;
-    background-color: dimgrey;
+    background-color: rgba(44, 43, 43, 0.521);
     
 }
 
@@ -69,7 +70,7 @@
     height: 170px;
     text-align: left;
     line-height: 30px;
-    background-color: lightgray;
+    background-color: rgba(71, 70, 70, 0.651);
 }
 
 .right .div3 .days .li5{

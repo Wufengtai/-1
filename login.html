@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/css2/bootstrap.min.css">
+    <script src="./ajax/ajax.js"></script>
+    <link rel="stylesheet" href="./picture/iconfont.css">
+    <script src="./vue/vue.js"></script>
+    <script src="./vendoer/jquery-3.5.1.min.js"></script>
+    <script src="./js/login.js"></script>
+    <title>登录页面</title>
+    <style>
+               body{
+            margin: 0;
+            padding: 0;
+        }
+        .iconfont{
+            font-size: 50px;
+            background-color: rgba(146, 53, 53, 0.3);
+            position: relative;
+        }
+        .mark{
+            background: url('../img/picture2.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+           
+        }
+        .panel-primary, .panel-footer{
+            background-color: rgba(60, 162, 245, 0.3);
+        }
+        .panel-heading{
+            background-color: rgba(45, 145, 226, 0.3);
+        }
+
+        .container{
+            position: relative;
+            display: none;
+        }
+        .div2{
+            width: 100%;
+            height: 75px;
+            color: whitesmoke;
+            position: relative;
+            text-align: center;
+        }
+        .div3{
+            width: 100%;
+            height: 20px;
+            color: whitesmoke;
+            position: relative;
+            text-align: center;
+        }
+        .fanwei {
+            margin: 200px 400px;
+        }
+
+        .mag {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mark"></div>
+    <div class="div2">点<span class="iconfont icondecline-filling"></span>俺</div>
+    <div class="div3"> <h1 style="color: red;">注：</h1>因测试阶段，云内存存储低，故而会定期检查内存，若发现你的账号登不上则是清内存了，需要重新注册！感谢你的使用！</div>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>用户登录</h2>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="username" style="color: whitesmoke;">账号</label>
+                    <input type="number" name="username" class="form-control" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;"/>
+                </div>
+                <div class="form-group">
+                    <label for="password" style="color: whitesmoke;">密码</label>
+                    <input type="password" name="password" class="form-control" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;"/>
+                </div>
+                <div class="form-group">
+                    <p id="mag" class="mag"></p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg" id="submit" style=" background-color: rgba(232, 238, 243, 0.616); color:whitesmoke;">登录</button>
+                </div>
+                <div class="panel-footer">
+                    <a href="./index.html" >马上注册</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

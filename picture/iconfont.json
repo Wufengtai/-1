@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "15838590",
+      "name": "decline-filling",
+      "font_class": "decline-filling",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "16654580",
+      "name": "icon_login_input_user",
+      "font_class": "icon_login_input_user",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "16654598",
+      "name": "icon_login_input_password",
+      "font_class": "icon_login_input_password",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
       "icon_id": "16545510",
       "name": "设备检测",
       "font_class": "shebeijiance",

@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+}
+.Rh4{
+    margin-left: 10px;
+    color: blue;
+}
+.but3{
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: black;
+    margin-top: 0;
+}
+.right{
+    left: 800px;
+    margin-top: 100px;
+    width: 300px;
+    height: 600px;
+    margin-bottom: 50px;
+    position: absolute;
+    
+}
+.but1{
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    margin: 15px;
+    margin-top: 0;
+}
+.But{
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+    margin: 15px;
+    margin-top: 0;
+}
+
+.Fdiv{
+    left: 550px;
+    width: 300px;
+    height: 70px;
+    display: none;
+    position: absolute;
+}
+
+.rh5{
+    border-bottom: 1px solid gainsboro;
+}
+
+.TopRight{
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 50px;
+    color: gray;
+    background-color: rgba(8, 8, 8, 0.801);
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+}
+.ButtonRight{
+    top: 50px;
+    left: 0;
+    width: 300px;
+    height: auto;
+    background-color: rgba(20, 20, 20, 0.63);
+    text-align: left;
+    line-height: 50px;
+    position: absolute;
+}
+.left1{
+    margin: 100px;
+    width: 600px;
+    height: 500px;
+    background-color: rgba(26, 25, 24, 0.3);
+    position: absolute;
+   
+}
+.time{
+    color: royalblue;
+            font-size: 10px;
+}
+img {
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+
+}
+.LeftShow{
+    margin: 100px;
+    width: 600px;
+    height: auto;
+    background-color: rgba(26, 25, 24, 0.3);
+    position: absolute;
+}
+.SeeLeft{
+    left: 0;
+    top: 0;
+    width: 600px;
+    height: 300px;
+    background-color: rgba(26, 25, 24, 0.3);
+    color: whitesmoke;
+    position: absolute;
+}
+.WriteLeft{
+    left: 0;
+    top: 320px;
+    width: 600px;
+    height: 200px;
+    background-color: rgba(24, 23, 23, 0.568);
+    color: whitesmoke;
+    position: absolute;
+}
+.imgLeft{
+    left: 0;
+    top: 300px;
+    width: 600px;
+    height: 20px;
+    background-color: rgba(14, 13, 13, 0.589);
+    color: whitesmoke;
+    position: absolute;
+}
+textarea{
+    width: 600px;
+    height: 198px;
+    background-color: rgba(24, 23, 23, 0.568);
+    
+}

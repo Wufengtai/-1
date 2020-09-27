@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="./vendoer/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="./picture/iconfont.css">
+    <link rel="stylesheet" href="./css/lunbo.css">
+    <link rel="stylesheet" href="./css/rilii.css">
+    <script src="./ajax/ajax.js"></script>
+    <script src="./vue/vue.js"></script>
+    <script src="./js/lunbo.js"></script>
+    <script src="./js/rili.js"></script>
+    <script src="./js/zuye.js"></script>
+    <script>
+        function download(data) {
+            var arr = data.s;
+            var oul = document.getElementById('oul');
+            oul.innerHTML = '';
+            oul.style.direction = 'block';
+            oul.style.textAlign = 'left';
+            oul.style.marginLeft = '75px';
+            oul.style.color = 'white';
+            for (var i = 0; i < arr.length; i++) {
+                var oli = document.createElement('li');
+                var oa = document.createElement('a');
+                oa.innerHTML = arr[i];
+                oa.href = 'http://www.baidu.com/s?wd=' + arr[i];
+                oa.target = '_blank';
+                oli.style.listStyle = 'none';
+                oli.appendChild(oa);
+                oul.appendChild(oli);
+
+            }
+
+
+        }
+        window.onload = function () {
+            var oInput = document.getElementById('Ssou');
+            var oul = document.getElementById('oul');
+            var Sow = document.getElementById('Sou');
+            oInput.onkeyup = function () {
+                var onvalue = oInput.value;
+                if (!onvalue) {
+                    oul.style.display = 'none';
+                } else {
+
+                    var oscript = document.createElement('script');
+                    oscript.src = `https://www.baidu.com/su?wd=${oInput.value}&cb=download`;
+                    document.body.appendChild(oscript);
+                }
+            }
+
+        }      
+    </script>
+    <title>个人网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .mark {
+            background: url('./img/picture.jpg') no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+        }
+
+        .container {
+            position: relative;
+            background-color: rgba(53, 52, 52, 0.3);
+
+        }
+
+        header {
+            margin-top: 20px;
+            color: white;
+        }
+
+        header .iconfont {
+            font-size: 40px;
+        }
+
+        header #Ssuo li {
+            text-align: left;
+            list-style: none;
+        }
+
+        .biaoti {
+            color: white;
+            margin-top: 20px;
+            border: 1px solid white;
+            border-left-style: none;
+            border-right-style: none;
+        }
+
+        .biaoti a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: gray;
+        }
+
+        .biaoti a:hover {
+            background-color: whitesmoke;
+            border-radius: 30%;
+        }
+
+        .middle .fenqu {
+            margin-top: 7px;
+            height: 110px;
+            border: 1px white solid;
+            border-left-style: none;
+            border-right-style: none;
+            border-top-style: none;
+        }
+
+        .middle .right {
+            width: 300px;
+
+            float: right;
+
+        }
+
+        .middle .zuo {
+            width: 650px;
+            margin-top: 10px;
+            float: left;
+        }
+
+        .middle .zuo img {
+            width: 50px;
+            height: 50px;
+            background-size: 50px 50px;
+
+        }
+
+        .middle .zuo p {
+            font-size: 20px;
+
+        }
+
+        .middle .zuo .time {
+            color: royalblue;
+            font-size: 10px;
+
+        }
+
+        .middle .zuo button {
+
+            font-size: 10px;
+
+        }
+
+
+
+        .middle .right .iconfont {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mark"></div>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-8 "><a style="font-size: 30px;" href="">青山绿水</a><br>
+                    个人网站
+                </div>
+
+                <div class="col-md-4 text-right">
+                    <form class="form-inline">
+                        <span class="iconfont iconshebeijiance" @click="headerSpan()"></span>
+                        <input type="text" class="form-control" placeholder="请输入内容" id="Ssou" autocomplete="off" />
+                        <input class="btn btn-default" type="button" id="obutton" value="搜索" />
+                        <ul id="oul"></ul>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row biaoti">
+
+                <a href="" class="col-sm-1 active" id="a4">生活琐事</a>
+                <a href="" class="col-sm-1 active" id="a1">有感而发</a>
+                <a href="./gameOpt/index.html" class="col-sm-1 active">游戏试玩</a>
+                <a href="" class="col-sm-1 active">随意打赏</a>
+                <a href="" class="col-sm-1 active" id="a2">关于自己</a>
+                <a href="" class="col-sm-1 active" id="a3">我的朋友</a>
+                <a href="" class="col-sm-1 active">阅读记录</a>
+                <a href="" class="col-sm-1 active">观影记录</a>
+                <a href="" class="col-sm-1 active">待开发位</a><br>
+            </div>
+        </header>
+        <middle class="row middle">
+            <div class="col-md-12 fenqu">
+                <div class="col-md-4 lunbo" id="lunbo1">
+                    <img src="./img/1.jpg" alt="">
+                    <img src="./img/2.jpg" alt="">
+                    <img src="./img/3.jpg" alt="">
+                    <img src="./img/4.jpg" alt="">
+                    <img src="./img/5.jpg" alt="">
+                    <ul class="num">
+                        <li class="li1">1</li>
+                        <li class="li1">2</li>
+                        <li class="li1">3</li>
+                        <li class="li1">4</li>
+                        <li class="li1">5</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-right">
+                    <audio src="./music/1.mp3" controls preload="auto" autoplay="autoplay"
+                        style="margin-top: 20px; margin-left: 35px; "></audio>
+                </div>
+            </div>
+            <div class="text-left zuo " id="ONtext"></div>
+            <div class="right">
+                <div class="ger" id="Gren">
+                    <h3 class="text-center">个人介绍框</h3>
+                    <p class="text-justify" id="name2"></p>
+                    <p class="text-justify" id="work"></p>
+                    <p class="text-justify" id="Email"></p>
+                    <p class="text-justify" id="address"></p><br>
+                    <span class="iconfont iconicon-test4" id="zan"></span>&nbsp; &nbsp;
+                    <!-- {{number1}}个  {{number2}}次-->
+                    <span class="iconfont iconicon-test5" id="sou"></span>
+                </div>
+
+
+                <div class="div3">
+                    <div class="month">
+
+                        <ul class="ul2">
+                            <li class="prev" id="prev">❮</li>
+                            <li class="next" id="next1">❯</li>
+                            <li class="time">
+                                <h3 id="li2">月份</h3>
+                                <h6 id="shijian">时间</h6>
+                                <span id="year">2016</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="weekdays">
+                        <li class="li3">一</li>
+                        <li class="li3">二</li>
+                        <li class="li3">三</li>
+                        <li class="li3">四</li>
+                        <li class="li3">五</li>
+                        <li class="li3">六</li>
+                        <li class="li3">七</li>
+                    </ul>
+
+                    <ul class="days">
+                        <i class="li5 li4">1</i>
+                        <i class="li5 li4">2</i>
+                        <i class="li5 li4">3</i>
+                        <i class="li5 li4">4</i>
+                        <i class="li5 li4">5</i>
+                        <i class="li5 li4">6</i>
+                        <i class="li5 li4">7</i>
+                        <i class="li7 li4">8</i>
+                        <i class="li7 li4">9</i>
+                        <i class="li7 li4">10</i>
+                        <i class="li7 li4">11</i>
+                        <i class="li7 li4">12</i>
+                        <i class="li7 li4">13</i>
+                        <i class="li7 li4">14</i>
+                        <i class="li6 li4">15</i>
+                        <i class="li6 li4">16</i>
+                        <i class="li6 li4">17</i>
+                        <i class="li6 li4">18</i>
+                        <i class="li6 li4">19</i>
+                        <i class="li6 li4">20</i>
+                        <i class="li6 li4">21</i>
+                        <i class="li6 li4">22</i>
+                        <i class="li6 li4">23</i>
+                        <i class="li6 li4">24</i>
+                        <i class="li6 li4">25</i>
+                        <i class="li6 li4">26</i>
+                        <i class="li6 li4">27</i>
+                        <i class="li6 li4">28</i>
+                        <i class="li6 li4">29</i>
+                        <i class="li6 li4">30</i>
+                        <i class="li6 li4">31</i>
+                    </ul>
+                </div>
+            </div>
+
+        </middle>
+
+    </div>
+</body>
+
+</html>
